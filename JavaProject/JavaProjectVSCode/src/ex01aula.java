@@ -6,7 +6,7 @@ public class ex01aula {
         Pessoa pessoa_teste;
         pessoa_teste = new Pessoa();
         System.out.println("Digite o seu nome: ");
-        String nome_pessoa = input.nextLineBr();
+        String nome_pessoa = input.nextLine();
         System.out.println("Digite a sua idade: ");
         int idade_pessoa = input.nextInt();
 
