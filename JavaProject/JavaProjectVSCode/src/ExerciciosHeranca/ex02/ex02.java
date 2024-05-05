@@ -1,3 +1,4 @@
+package ex02;
 // Enum para representar as localizações do ingresso VIP
 
 import java.util.Arrays;
