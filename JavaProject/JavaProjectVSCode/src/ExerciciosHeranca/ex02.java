@@ -1,51 +1,82 @@
-package ExerciciosHeranca;
+// Enum para representar as localizações do ingresso VIP
 
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class ex02 {
-    
-    enum Localizacao{
-        CAMAROTE_SUPERIOR, CAMAROTE_INFERIOR
+enum Localizacao {
+    CAMAROTE_SUPERIOR,
+    CAMAROTE_INFERIOR
+}
+
+// Classe Ingresso
+class Ingresso {
+    protected double valor;
+
+    public Ingresso(double valor) {
+        this.valor = valor;
     }
 
-    public class Ingresso{
-        private double valor;
-        
-        public Ingresso(double _valor){
-            this.valor = _valor;
-        }
+    public double retornaValor() {
+        return valor;
+    }
+}
 
-        public double retornaValor(){
-            return valor;
-        }
-
+// Classe IngressoNormal, que herda de Ingresso
+class IngressoNormal extends Ingresso {
+    public IngressoNormal(double valor) {
+        super(valor);
     }
 
-    public class IngressoNormal extends Ingresso{
-        public IngressoNormal(double _valor){
-            super(_valor);
-        }
-
-        public String toString(){
-            return ""
-        }
-
+    @Override
+    public String toString() {
+        return "Ingresso Normal - Valor: R$" + valor;
     }
+}
 
-    public class IngressoVip extends Ingresso{
-        Scanner input = new Scanner(System.in);
-        private Localizacao camarote;
-        public IngressoVip(double _valor, Localizacao _camarote){
-            super(_valor);
-            while (_camarote.toUpperCase() != "CAMAROTE_SUPERIOR" || _camarote.toUpperCase() != "CAMAROTE_INFERIOR") {
-                System.out.println("Por favor, escolha camarote_superior ou camarote_inferior");
-                String camaroteCorrecao = input.next();
-                _camarote = camaroteCorrecao;
+// Classe IngressoVip, que herda de Ingresso
+class IngressoVip extends Ingresso {
+    private Localizacao localizacao;
+    private Scanner input = new Scanner(System.in);
+    public IngressoVip(double valor, Localizacao localizacao) {
+        super(valor);
+        do {
+            System.out.println("Escolha a localização:");
+            System.out.println(Arrays.toString(Localizacao.values()));
+            String localizacaoStr = input.next();
+            try {
+                localizacao= Localizacao.valueOf(localizacaoStr.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                System.out.println("Localização inválida. Escolha uma localização da lista.");
+                localizacao = null;
             }
+        } while (localizacao == null);
+        this.localizacao = localizacao;
+    }
+
+    public double retornaValorVip() {
+        if (localizacao == Localizacao.CAMAROTE_SUPERIOR) {
+            return valor * 1.5; // Adicional de 50%
+        } else {
+            return valor * 1.7; // Adicional de 70%
         }
     }
 
+    @Override
+    public String toString() {
+        return "Ingresso VIP - Localização: " + localizacao + ", Valor: R$" + retornaValorVip();
+    }
+}
+
+public class ex02 {
     public static void main(String[] args) {
-        
+        // Exemplo de uso das classes
+        IngressoNormal ingressoNormal = new IngressoNormal(100.0);
+        System.out.println(ingressoNormal); // Saída: Ingresso Normal - Valor: R$100.0
+
+        IngressoVip ingressoVip1 = new IngressoVip(150.0, Localizacao.CAMAROTE_SUPERIOR);
+        System.out.println(ingressoVip1); // Saída: Ingresso VIP - Localização: CAMAROTE_SUPERIOR, Valor: R$225.0
+
+        IngressoVip ingressoVip2 = new IngressoVip(200.0, Localizacao.CAMAROTE_INFERIOR);
+        System.out.println(ingressoVip2); // Saída: Ingresso VIP - Localização: CAMAROTE_INFERIOR, Valor: R$340.0
     }
 }
