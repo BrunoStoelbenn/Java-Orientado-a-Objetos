@@ -1,20 +1,30 @@
-import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
+
 public class teste {
 
-    public static int maior(int x, int y){
-        if (x > y) return x;
-        else return y;
-    }
-    public static void main (String [] args){
-        int m, x, y;
+    public static void main(String[] args) {
+        // Criando o JFrame
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("Exibição de Imagem");
 
-        Scanner input = new Scanner(System.in);
+        // Carregando a imagem
+        ImageIcon icon = new ImageIcon("ExerciciosHeranca/ex04/Cachorro.jpg"); // Substitua "cachorro.jpg" pelo nome do seu arquivo de imagem
+        JLabel label = new JLabel();
+        label.setIcon(icon);
 
-        x = input.nextInt();
-        y = input.nextInt();
+        // Adicionando a imagem ao JFrame
+        frame.getContentPane().add(label, BorderLayout.CENTER);
 
-        m = maior(x, y);
+        // Ajustando o tamanho do JFrame
+        frame.pack();
 
-        System.out.println(m);
+        // Centralizando o JFrame na tela
+        frame.setLocationRelativeTo(null);
+
+        // Tornando o JFrame visível
+        frame.setVisible(true);
     }
 }
