@@ -1,21 +1,29 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+import java.awt.image.BufferedImage;
 
 public class teste {
 
     public static void main(String[] args) {
-        // Criando o JFrame
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Exibição de Imagem");
 
         // Carregando a imagem
-        ImageIcon icon = new ImageIcon("ExerciciosHeranca/ex04/Cachorro.jpg"); // Substitua "cachorro.jpg" pelo nome do seu arquivo de imagem
-        JLabel label = new JLabel();
-        label.setIcon(icon);
+        File arquivo = new File("cachorro.jpg"); // Substitua "cachorro.jpg" pelo nome do seu arquivo de imagem
+        BufferedImage imagem = null;
+        try {
+            imagem = ImageIO.read(arquivo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        // Adicionando a imagem ao JFrame
+        // Criando um JLabel para exibir a imagem
+        JLabel label = new JLabel(new ImageIcon(imagem));
+
+        // Adicionando o JLabel ao JFrame
         frame.getContentPane().add(label, BorderLayout.CENTER);
 
         // Ajustando o tamanho do JFrame
@@ -26,5 +34,8 @@ public class teste {
 
         // Tornando o JFrame visível
         frame.setVisible(true);
+        
+        
+
     }
 }
