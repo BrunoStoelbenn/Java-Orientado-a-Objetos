@@ -1,4 +1,4 @@
-import DESAFIOJAVA.*;
+package PRIMEIRODESAFIOJAVA;
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class DesafioMain {
     public static void main(String[] args) {
-        List<Suino> bovinos = new ArrayList<>();
+        List<Bovino> bovinos = new ArrayList<>();
         List<Suino> suinos = new ArrayList<>();
         List<Equino> equinos = new ArrayList<>();
         Scanner input = new Scanner(System.in);
@@ -258,7 +258,7 @@ public class DesafioMain {
         System.out.println("9. Sair");
     }
 
-    public static void incluirBovino(List<Suino> bovinos, Scanner input){
+    public static void incluirBovino(List<Bovino> bovinos, Scanner input){
         System.out.println("Quantos bovinos você deseja adicionar? ");
         int adicionar = input.nextInt();
         System.out.println("");
@@ -273,7 +273,7 @@ public class DesafioMain {
             System.out.println("Peso: ");
             float peso = input.nextFloat();
             System.out.println();
-            Suino bovino = new Suino(altura, comprimento, largura, peso);
+            Bovino bovino = new Bovino(altura, comprimento, largura, peso);
             bovinos.add(bovino);
         }
         
@@ -321,9 +321,9 @@ public class DesafioMain {
 
     }
 
-    public static void relatorioBovinos(List<Suino> bovinos){
+    public static void relatorioBovinos(List<Bovino> bovinos){
         System.out.println("Relatório dos Bovinos");
-        for (Suino bovino : bovinos){ // For que itera sobre cada bovino na lista de bovinos
+        for (Bovino bovino : bovinos){ // For que itera sobre cada bovino na lista de bovinos
             if(bovino.getStatus().equals("Ativo")){
                 System.out.println("ID: " + bovino.getId() + ", Altura: " + bovino.getAltura() + "m" + ", Comprimento: " + bovino.getComprimento() + "m" + ", Largura: " + bovino.getLargura() + "m" + ", Peso: " + bovino.getPeso() + "Kg" + ", Status: " + bovino.getStatus());
             }
@@ -348,8 +348,8 @@ public class DesafioMain {
         }
     }
 
-    public static void consultarBovino(List<Suino> bovinos, int id){
-        for (Suino bovino : bovinos) {
+    public static void consultarBovino(List<Bovino> bovinos, int id){
+        for (Bovino bovino : bovinos) {
             if (bovino.getId() == id) {
                 System.out.println("ID: " + bovino.getId() + ", Altura: " + bovino.getAltura() + "m" + ", Comprimento: " + bovino.getComprimento() + "m" + ", Largura: " + bovino.getLargura() + "m" + ", Peso: " + bovino.getPeso() + "Kg" + ", Status: " + bovino.getStatus());    
             }
@@ -381,7 +381,7 @@ public class DesafioMain {
         }
     }
 
-    public static void avaliarBovino(List<Suino> bovinos, int id, Scanner input){
+    public static void avaliarBovino(List<Bovino> bovinos, int id, Scanner input){
         System.out.println();
         System.out.println("Nova altura: ");
         float novaAltura = input.nextFloat();
@@ -391,7 +391,7 @@ public class DesafioMain {
         float novaLargura = input.nextFloat();
         System.out.println("Novo peso: ");
         float novoPeso = input.nextFloat();
-        for (Suino bovino : bovinos) {
+        for (Bovino bovino : bovinos) {
             if (bovino.getId() == id) {
                 bovino.avaliar(novaAltura, novoComprimento, novaLargura, novoPeso);
             }
@@ -432,9 +432,9 @@ public class DesafioMain {
         }
     }
 
-    public static float registrarVendaBovino(List<Suino> bovinos, int id, Scanner input, float totalVendasBovinos){
+    public static float registrarVendaBovino(List<Bovino> bovinos, int id, Scanner input, float totalVendasBovinos){
         System.out.println();
-        for (Suino bovino : bovinos) {
+        for (Bovino bovino : bovinos) {
             if (bovino.getId() == id) {
                 if(bovino != null && bovino.getStatus().equals("Ativo")){
                     bovino.setStatus("Vendido");
@@ -495,9 +495,9 @@ public class DesafioMain {
         return totalVendasEquinos;
     }
 
-    public static int registrarPerdaBovino(List<Suino> bovinos, int id, int totalPerdasBovinos){
+    public static int registrarPerdaBovino(List<Bovino> bovinos, int id, int totalPerdasBovinos){
         System.out.println();
-        for (Suino bovino : bovinos) {
+        for (Bovino bovino : bovinos) {
             if (bovino.getId() == id) {
                 if(bovino != null && bovino.getStatus().equals("Ativo")){
                     bovino.setStatus("Perdido");
@@ -549,9 +549,9 @@ public class DesafioMain {
         return totalPerdasEquinos;
     }
 
-    public static void relatorioVendasBovino(List<Suino> bovinos, float totalVendasBovinos){
+    public static void relatorioVendasBovino(List<Bovino> bovinos, float totalVendasBovinos){
         System.out.println();
-        for (Suino bovino : bovinos) {
+        for (Bovino bovino : bovinos) {
             if(bovino != null && bovino.getStatus().equals("Vendido")){
                 System.out.println("ID: " + bovino.getId() + ", Altura: " + bovino.getAltura() + "m" + ", Comprimento: " + bovino.getComprimento() + "m" + ", Largura: " + bovino.getLargura() + "m" + ", Peso: " + bovino.getPeso() + "Kg" + ", Status: " + bovino.getStatus());
             }
@@ -579,9 +579,9 @@ public class DesafioMain {
         System.out.println("Total vendas equinos: R$" + totalVendasEquinos);
     }
 
-    public static void relatorioPerdasBovino(List<Suino> bovinos, int totalPerdasBovinos){
+    public static void relatorioPerdasBovino(List<Bovino> bovinos, int totalPerdasBovinos){
         System.out.println();
-        for (Suino bovino : bovinos) {
+        for (Bovino bovino : bovinos) {
             if(bovino != null && bovino.getStatus().equals("Perdido")){
                 System.out.println("ID: " + bovino.getId() + ", Altura: " + bovino.getAltura() + "m" + ", Comprimento: " + bovino.getComprimento() + "m" + ", Largura: " + bovino.getLargura() + "m" + ", Peso: " + bovino.getPeso() + "Kg" + ", Status: " + bovino.getStatus());
             }

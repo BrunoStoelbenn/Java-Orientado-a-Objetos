@@ -1,4 +1,4 @@
-package DESAFIOJAVA;
+package PRIMEIRODESAFIOJAVA;
 
 public class Bovino extends Animal{
     public Bovino(float altura, float comprimento, float largura, float peso) {
