@@ -37,20 +37,20 @@ public class ex01 {
         //  Chamando o método estático emitirSomLocomocao enviando como atributo o arraylist jaulas que está dentro da classe zoologico
         emitirSomLocomocao(zoologico.jaulas);
 
-        // System.out.println("Saída do método estático emitirSom(Animal animal)");
-        // //  Prints para testar o método estático de emitirSom que recebe como parâmetro um animal.
-        // System.out.println(emitirSom(galinha));
-        // System.out.println(emitirSom(brutus));
-        // System.out.println(emitirSom(pedipano));
-        // System.out.println(emitirSom(preguica));
-        // System.out.println();
+        System.out.println("Saída do método estático emitirSom(Animal animal)");
+        //  Prints para testar o método estático de emitirSom que recebe como parâmetro um animal.
+        System.out.println(emitirSom(galinha));
+        System.out.println(emitirSom(brutus));
+        System.out.println(emitirSom(pedipano));
+        System.out.println(emitirSom(preguica));
+        System.out.println();
 
-        // System.out.println("Saída do método estático examinar(Animal animal) da classe Veterinario");
-        // //  Prints para testar o método estático examinar() da classe Veterinario que recebe como parâmetro um animal.
-        // System.out.println(Veterinario.examinar(galinha));
-        // System.out.println(Veterinario.examinar(brutus));
-        // System.out.println(Veterinario.examinar(pedipano));
-        // System.out.println(Veterinario.examinar(preguica));
+        System.out.println("Saída do método estático examinar(Animal animal) da classe Veterinario");
+        //  Prints para testar o método estático examinar() da classe Veterinario que recebe como parâmetro um animal.
+        System.out.println(Veterinario.examinar(galinha));
+        System.out.println(Veterinario.examinar(brutus));
+        System.out.println(Veterinario.examinar(pedipano));
+        System.out.println(Veterinario.examinar(preguica));
     }
 
     public static String emitirSom(Animal animal){
