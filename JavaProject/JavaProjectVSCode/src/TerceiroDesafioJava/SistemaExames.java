@@ -1,5 +1,8 @@
 package TerceiroDesafioJava;
 
+// Controle e acompanhamento de exames médicos
+// Desenvolvedores: Bruno Cassiano Stoelbenn e Igor de Souza Steffens
+
 import java.util.*;
 
 public class SistemaExames {
@@ -52,9 +55,9 @@ public class SistemaExames {
             if (usuario.hasRole("ADMIN")) {
                 System.out.println("6. Criar usuário");
                 System.out.println("7. Definir papel de usuário");
-                System.out.println("9. Mostrar todos os usuários");
+                System.out.println("8. Trocar de usuário");
             }
-            System.out.println("8. Trocar de usuário");
+            System.out.println("9. Mostrar todos os usuário");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();

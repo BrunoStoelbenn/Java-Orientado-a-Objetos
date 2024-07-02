@@ -1,0 +1,87 @@
++--------------------+
+|      Usuario       |
++--------------------+
+| - id: int          |
+| - nome: String     |
+| - senha: String    |
+| - papel: String    |
++--------------------+
+| + autenticar(senha)| 
+| + hasRole(role)    |
++--------------------+
+        ^
+        |
++-------+-------+
+|               |
++------+--------+     
+| Paciente      |     
++---------------+
+| - requisicoes:List<Requisicao> |
+| + consultarExames()            |
+| + adicionarRequisicao(requisicao: Requisicao) |
++-------------------------------+
+        ^
+        |
++-------+-------+
+|               |
++------+--------+
+| Medico        |
++---------------+
+| + criarRequisicao(paciente: Paciente, exames: List<Exame>) |
++----------------------------+
+        ^
+        |
++-------+-------+
+|               |
++------+--------+
+| Funcionario   |
++---------------+
+| + Funcionario(id: int, nome: String, senha: String, papel: String) |
++------------------------------+
+        ^
+        |
++-------+-------+
+|               |
++------+--------+
+| Admin         |
++---------------+
+| + definirPapel(usuario: Usuario, papel: String) |
++------------------------------+
+
++--------------------+
+|     Requisicao     |
++--------------------+
+| - medico: Medico   |
+| - paciente: Paciente |
+| - exames: List<Exame> |
++---------------------+
+| + Requisicao(medico: Medico, paciente: Paciente, exames: List<Exame>) |
++---------------------+
+
++--------------------+
+|       Exame        |
++--------------------+
+| - id: int          |
+| - tipo: String     |
+| - descricao: String|
+| - data: Date       |
+| - coleta: Coleta   |
+| - diagnostico: Diagnostico |
++--------------------+
+| + registrarColeta(coleta: Coleta) |
+| + registrarDiagnostico(diagnostico: Diagnostico) |
++--------------------+
+
++--------------------+
+|      Coleta        |
++--------------------+
+| - quantidade: int  |
+| - data: Date       |
++--------------------+
+
++--------------------+
+|    Diagnostico     |
++--------------------+
+| - resultado: String|
+| - parecer: String  |
++--------------------+
