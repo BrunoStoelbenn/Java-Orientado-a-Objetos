@@ -5,6 +5,7 @@ import java.util.*;
 public class SistemaExames {
     static List<Usuario> usuarios = new ArrayList<>();
     static List<Requisicao> requisicoes = new ArrayList<>();
+    static int exameIdCounter = 0; // Contador para IDs únicos de exames
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -153,7 +154,7 @@ public class SistemaExames {
             System.out.print("Descrição do exame: ");
             String descricao = scanner.nextLine();
 
-            Exame exame = new Exame(i, tipo, descricao, new Date());
+            Exame exame = new Exame(exameIdCounter++, tipo, descricao, new Date());
             exames.add(exame);
         }
 
@@ -168,7 +169,9 @@ public class SistemaExames {
             return;
         }
 
-        medico.criarRequisicao(paciente, exames);
+        Requisicao requisicao = new Requisicao(medico, paciente, exames);
+        requisicoes.add(requisicao);
+        paciente.adicionarRequisicao(requisicao);
 
         System.out.println("Requisição criada com sucesso.");
     }
